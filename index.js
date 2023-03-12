@@ -15,10 +15,14 @@ const expenditureModel=require('./models/Expenditure')
 const DebtModel = require("./models/deptmodel");
 const adminModel=require("./models/adminmodel")
 
+//added after deploy
 app.use((req, res, next) => {
   res.setHeader('Cache-Control', 'no-cache, no-store, must-revalidate');
   next();
 });
+app.use(express.json());
+app.use(express.urlencoded({ extended: true }));
+
 
 app.use(cors());
 
