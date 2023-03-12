@@ -15,7 +15,10 @@ const expenditureModel=require('./models/Expenditure')
 const DebtModel = require("./models/deptmodel");
 const adminModel=require("./models/adminmodel")
 
-
+app.use((req, res, next) => {
+  res.setHeader('Cache-Control', 'no-cache, no-store, must-revalidate');
+  next();
+});
 
 app.use(cors());
 
