@@ -384,10 +384,10 @@ app.post("/todayuser",(req,res)=>{
 })
 
 app.post("/updateprofile",(req,res)=>{
-  adminModel.updateOne({},{$set:{name:req.body.name,phone:req.body.phone,address:req.body.address}}),(err,data)=>{
-      if(err) throw err
-      res.send('saved');
-     })
+  adminModel.updateOne({},{$set:{name:req.body.name,phone:req.body.phone,address:req.body.address}},(err,result)=>{
+    if(err) throw err
+    res.send('saved');
+  })
 })
 
 
