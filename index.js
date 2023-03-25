@@ -171,6 +171,14 @@ app.get('/getexpenditure',(req,res)=>{
    })
 })
 
+app.get('/getprofile',(req,res)=>{
+    adminModel.find({},(err,result)=>{
+        if (err) throw err;
+        console.log(result);
+        res.send(result)
+       })
+})
+
 app.get('/getallusers',(req,res)=>{
     userModel.find({},(err,result)=>{
         if (err) throw err;
@@ -185,6 +193,14 @@ app.get('/getcollector',(req,res)=>{
       console.log(result);
       res.send(result)
      })
+})
+
+app.post('/deleteuser',(req,res)=>{
+  userModel.deleteOne({userId:req.body.n},(err,result)=>{
+    if (err) throw err;
+    console.log(result);
+    res.send(result);
+  })
 })
 
 app.post('/getpaidlist',(req,res)=>{
@@ -300,7 +316,6 @@ app.post('/getquicklist', (req, res) => {
 });
 
 app.post('/login',(req,res)=>{
-
   let as=req.body.user;
   console.log(as);
   if(as.includes("admin")){
@@ -368,6 +383,15 @@ app.post("/todayuser",(req,res)=>{
       return (data.length)?  res.json({todayuser:data.length}):res.json({todayuser:data.length});
      })
 })
+
+app.post("/updateprofile",(req,res)=>{
+  adminModel.updateOne({},{$set:{name:req.body.name,phone:req.body.phone,address:req.body.address}}),(err,data)=>{
+      if(err) throw err
+      res.send('saved');
+     })
+})
+
+
 
 
 app.post('/updatestatus',upload,(req,res)=>{
