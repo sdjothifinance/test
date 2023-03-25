@@ -60,7 +60,6 @@ app.get('/',(req,res) => {
 
 
 app.post('/adduser',(req,res)=>{
-
     const{name,userId,phone,amount,weeks,startDate,center,savings}=req.body;
     const aa=-1*amount;
     // console.log(aa)
