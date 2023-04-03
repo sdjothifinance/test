@@ -78,6 +78,15 @@ app.post('/adduser',(req,res)=>{
 
     for(i=1;i<=weeks;i++){
         let instalment=principle+interest,outstanding=amount-(i*principle);
+        if(instalment%10===0){
+          instalment=instalment;
+        }
+        else{
+          let instalment2 = instalment+(10-instalment%10);
+          let remain_interest = instalment2 - instalment;
+          instalment=instalment2;
+          interest+=remain_interest;
+        }
         temp={
             s_no:(i<10)?`0${i}`:`${i}`,
             date:i===1?selectDate(date,0):selectDate(date,i-1),
