@@ -87,6 +87,8 @@ app.post('/adduser',(req,res)=>{
           instalment=instalment2;
           interest+=remain_interest;
         }
+      if(i==weeks) 
+        outstanding=0;
         temp={
             s_no:(i<10)?`0${i}`:`${i}`,
             date:i===1?selectDate(date,0):selectDate(date,i-1),
